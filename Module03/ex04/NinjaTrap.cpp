@@ -13,7 +13,6 @@ NinjaTrap::NinjaTrap() : ClapTrap()
     this->reductionDamage = 0;
 }
 
-
 NinjaTrap::NinjaTrap(std::string name) : ClapTrap(name)
 {
     std::cout << "Torute Ninja tortue ninjaaaaa" << std::endl;
@@ -25,6 +24,14 @@ NinjaTrap::NinjaTrap(std::string name) : ClapTrap(name)
     this->_meleedAttack = 60;
     this->_rangeAttack = 5;
     this->reductionDamage = 0;
+}
+
+NinjaTrap::NinjaTrap(int i) : ClapTrap()
+{
+    i = 0;
+    this->maxEnergie = 120;
+    this->energie = this->maxEnergie;
+    this->_meleedAttack = 60;
 }
 
 NinjaTrap::NinjaTrap(const NinjaTrap &NinjaTrap) : ClapTrap(NinjaTrap)

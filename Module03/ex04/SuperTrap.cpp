@@ -1,30 +1,14 @@
 #include "SuperTrap.hpp"
 
-SuperTrap::SuperTrap() :  ClapTrap(), FragTrap(), NinjaTrap()
+SuperTrap::SuperTrap() :  ClapTrap(), FragTrap(1), NinjaTrap(1)
 {
     std::cout << "Super is here" << std::endl;
-    this->hit = this->FragTrap::hit;
-    this->maxHit = this->FragTrap::maxHit;
-    this->energie = this->NinjaTrap::energie;
-    this->maxEnergie = this->NinjaTrap::maxEnergie;
-    this->name = "default_name";
-    this->_meleedAttack = this->NinjaTrap::_meleedAttack;
-    this->_rangeAttack = this->FragTrap::_rangeAttack;
-    this->reductionDamage = this->FragTrap::reductionDamage;
     
 }
 
-SuperTrap::SuperTrap(std::string const &name) : FragTrap(name)
+SuperTrap::SuperTrap(std::string const &name) : ClapTrap(name), FragTrap(1), NinjaTrap(1)
 {
     std::cout << name << " is here " << std::endl;
-    this->hit = this->FragTrap::hit;
-    this->maxHit = this->FragTrap::maxHit;
-    this->energie = this->NinjaTrap::energie;
-    this->maxEnergie = this->NinjaTrap::maxEnergie;
-    this->_meleedAttack = this->NinjaTrap::_meleedAttack;
-    this->_rangeAttack = this->FragTrap::_rangeAttack;
-    this->reductionDamage = this->FragTrap::reductionDamage;
-    std::cout << this->hit << " " << this->energie << " " << this->name << " " << this->_meleedAttack << " " << this->_rangeAttack << " " << this->reductionDamage << std::endl;
 }
 
 SuperTrap::SuperTrap(const SuperTrap &superTrap)

@@ -7,6 +7,9 @@
 #include <time.h>
 
 class FragTrap : public virtual ClapTrap{
+    protected:
+        FragTrap(int i);
+
     public:
         FragTrap();
         FragTrap(std::string name);

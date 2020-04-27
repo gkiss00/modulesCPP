@@ -8,6 +8,8 @@
 #include <iostream>
 
 class NinjaTrap : public virtual ClapTrap{
+    protected:
+        NinjaTrap(int i);
     public:
         NinjaTrap();
         NinjaTrap(std::string name);

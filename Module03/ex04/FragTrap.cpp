@@ -27,6 +27,15 @@ FragTrap::FragTrap(std::string name) : ClapTrap()
     this->reductionDamage = 5;
 }
 
+FragTrap::FragTrap(int i) : ClapTrap()
+{
+    i = 0;
+    this->maxHit = 100;
+    this->hit = this->maxHit;
+    this->_rangeAttack = 20;
+    this->reductionDamage = 5;
+}
+
 FragTrap::FragTrap(const FragTrap &fragTrap) : ClapTrap(fragTrap)
 {
     std::cout << "Je veux tes vetements tes bottes, et ta moto" << std::endl;
