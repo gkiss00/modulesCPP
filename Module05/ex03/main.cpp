@@ -1,4 +1,9 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 #include <string>
 #include <iostream>
@@ -22,7 +27,7 @@ int main()
 
     try
     {
-        std::cout << std::endl << "Creation d un ereaucrat d un grade trop bas : " << std::endl << std::endl;
+        std::cout << std::endl << "Creation d un bureaucrat d un grade trop bas : " << std::endl << std::endl;
         Bureaucrat b2("Carl", 151);
         std::cout << b2 << std::endl;
     }
@@ -37,7 +42,7 @@ int main()
 
     try
     {
-        std::cout << std::endl << "Creation d un ereaucrat d un bon grade : " << std::endl << std::endl;
+        std::cout << std::endl << "Creation d un bureaucrat d un bon grade : " << std::endl << std::endl;
         Bureaucrat b3("Bob", 2);
         std::cout << b3 << std::endl;
         b3.getPromoted();
@@ -57,7 +62,7 @@ int main()
 
     try
     {
-        std::cout << std::endl << "Creation d un ereaucrat d un tres mauvais grade : " << std::endl << std::endl;
+        std::cout << std::endl << "Creation d un bureaucrat d un tres mauvais grade : " << std::endl << std::endl;
         Bureaucrat b4("Eric", 148);
         std::cout << b4 << std::endl;
         b4.getDismiss();
@@ -77,54 +82,37 @@ int main()
 
     try
     {
-        std::cout << std::endl << "Creation d un form avec un grade trop haut : " << std::endl << std::endl;
-        Form f1("Impossible", 0, 0);
-        std::cout << f1 << std::endl;
+        std::cout << std::endl << "Creation d un patron un bronze et 3 fichier a exectuer : " << std::endl << std::endl;
+        ShrubberyCreationForm f1("Creation");
+        RobotomyRequestForm f2("Request");
+        PresidentialPardonForm f3("Pardon");
+
+        Bureaucrat boss("Patron", 1);
+        Bureaucrat noob("Bronze", 150);
+        noob.executeForm(f1);
+        noob.executeForm(f2);
+        noob.executeForm(f3);
+        boss.executeForm(f1);
+        boss.executeForm(f2);
+        boss.executeForm(f3);
+        std::cout << std::endl << "Arrivee d un Intern et creation d un fichier execute par le boss : " << std::endl << std::endl;
+        Intern intern;
+        Form *f = intern.makeForm("robotomy-request", "bob");
+        boss.executeForm(*f);
+        delete (f);
+        f = intern.makeForm("sHRubberY   8 cre ation", "bob");
+        boss.executeForm(*f);
+        delete(f);
     }
-    catch(Form::GradeTooHighException &e)
+    catch(Bureaucrat::GradeTooHighException &e)
     {
         std::cerr << e.what() << std::endl;
     }
-    catch(Form::GradeTooLowException &e)
+    catch(Bureaucrat::GradeTooLowException &e)
     {
         std::cerr << e.what() << std::endl;;
     }
-
-    try
-    {
-        std::cout << std::endl << "Creation d un form avec un grade trop bas : " << std::endl << std::endl;
-        Form f2("Impossible", 151, 150);
-        std::cout << f2 << std::endl;
-    }
-    catch(Form::GradeTooHighException &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-    catch(Form::GradeTooLowException &e)
-    {
-        std::cerr << e.what() << std::endl;;
-    }
-
-    try
-    {
-        std::cout << std::endl << "Creation d un form avec un grade correct : " << std::endl << std::endl;
-        Bureaucrat b5("Patron", 1);
-        Bureaucrat b6("Noob", 120);
-        Form f2("No_idea", 40, 40);
-        std::cout << f2 << std::endl;
-
-        b6.signForm(f2);
-        f2.beSigned(b5);
-    }
-    catch(Form::GradeTooHighException &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
-    catch(Form::GradeTooLowException &e)
-    {
-        std::cerr << e.what() << std::endl;;
-    }
-
+    
 
     return (0);
 }

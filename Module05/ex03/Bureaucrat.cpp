@@ -66,6 +66,18 @@ void Bureaucrat::signForm(Form &form)
     
 }
 
+void Bureaucrat::executeForm(Form &form)
+{
+    if (this->grade <= form.getRequireGradeToE())
+    {
+        std::cout << this->name << " execute form : " << form.getName() << std::endl;
+        form.execute(*this);  
+    }
+    else
+        std::cout << this->getName() << " n a pas le grade suffisant pour executer ce fichier" << std::endl;
+    
+}
+
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &tmp)
 {
     os << tmp.getName() << ", bureaucrat grade : " << tmp.getGrade();

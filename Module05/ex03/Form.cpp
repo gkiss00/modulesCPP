@@ -4,6 +4,10 @@ Form::Form() : name("no_name"), isSigned(false), requireGradeToS(1), requireGrad
 {
 
 }
+Form::Form(int rgs, int rge) : name("no_name"), isSigned(false), requireGradeToS(rgs), requireGradeToE(rge)
+{
+
+}
 Form::Form(std::string name, int rgs, int rge) : name(name), isSigned(false), requireGradeToS(rgs), requireGradeToE(rge)
 {
     if (rgs < 1 || rge < 1)

@@ -14,12 +14,13 @@ class Form {
         bool isSigned;
         const int requireGradeToS;
         const int requireGradeToE;
-
+    protected:
         Form();
+        Form(int rgs, int rge);
     public:
         Form(std::string name, int rgs, int rge);
         Form(const Form &form);
-        ~Form();
+        virtual ~Form();
 
         class GradeTooHighException : public std::exception {
             public:
@@ -36,6 +37,7 @@ class Form {
         int getRequireGradeToS() const;
         int getRequireGradeToE() const;
         void setSigned();
+        virtual void execute(const Bureaucrat &executor) const = 0;
 
         void beSigned(Bureaucrat &b);
 };
