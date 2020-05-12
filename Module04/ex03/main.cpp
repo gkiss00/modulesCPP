@@ -64,6 +64,14 @@ int main()
 
     std::cout << std::endl << "Creation et utilisation de Ice_3 et Cure_3 via la Source_1 :: " << std::endl <<std::endl;
 
+    AMateria *i5 = new Ice();
+    AMateria *i6 = new Ice();
+    AMateria *c5 = new Cure();
+
+    s1->learnMateria(i5);
+    s1->learnMateria(c5);
+    s1->learnMateria(i6);
+
     AMateria *i3 = s1->createMateria("ice");
     AMateria *c3 = s1->createMateria("cure");
 

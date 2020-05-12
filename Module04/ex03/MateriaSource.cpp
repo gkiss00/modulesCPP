@@ -57,20 +57,24 @@ void MateriaSource::learnMateria(AMateria *m)
             this->materia[i] = tmp[i];
         }
         this->materia[this->nb] = m;
+        ++this->nb;
         delete[](tmp);
     }
 }
 AMateria* MateriaSource::createMateria(std::string const &type)
 {
-    if (type.compare("ice") == 0)
+    for (int i = 0; i < this->nb; ++i)
     {
-        AMateria *ice = new Ice();
-        return (ice);
-    }
-    if (type.compare("cure") == 0)
-    {
-        AMateria *cure = new Cure();
-        return (cure);
+        if (this->materia[i]->getType().compare(type) == 0 && type.compare("ice") == 0)
+        {
+            AMateria *ice = new Ice();
+            return (ice);
+        }
+        if (this->materia[i]->getType().compare(type) == 0 && type.compare("cure") == 0)
+        {
+            AMateria *cure = new Cure();
+            return (cure);
+        }
     }
     return (NULL);
 }
