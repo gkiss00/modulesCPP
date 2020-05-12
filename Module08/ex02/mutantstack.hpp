@@ -22,6 +22,8 @@ class MutantStack : public std::stack<T>{
                 explicit iterator(MutantStack<T> &target, unsigned int index);
                 iterator &operator++();
                 iterator &operator--();
+                iterator &operator++(int);
+                iterator &operator--(int);
                 T operator*();
                 bool operator!=(MutantStack::iterator &target);
             private:
@@ -88,6 +90,24 @@ typename MutantStack<T>::iterator &MutantStack<T>::iterator::operator--()
 {
     this->index -= 1;
     return (*this);
+}
+
+template <typename T>
+typename MutantStack<T>::iterator    &MutantStack<T>::iterator::operator++(int i)
+{
+    (void)i;
+	iterator    tmp(*this);
+    operator++();
+    return tmp;
+}
+
+template <typename T>
+typename MutantStack<T>::iterator    &MutantStack<T>::iterator::operator--(int i)
+{
+    (void)i;
+	iterator    tmp(*this);
+    operator--();
+    return tmp;
 }
 
 template<typename T>
