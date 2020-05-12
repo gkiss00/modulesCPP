@@ -8,7 +8,7 @@ Span::Span(unsigned int nb)
 {
     this->max = nb;
 }
-Span::Span(Span &target)
+Span::Span(const Span &target)
 {
     this->max = target.max;
     for (unsigned long int i = 0; i < this->tab.size(); ++i)

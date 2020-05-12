@@ -12,7 +12,7 @@ class Span {
         Span();
     public:
         Span(unsigned int nb);
-        Span(Span &target);
+        Span(const Span &target);
         Span &operator=(Span &target);
         ~Span();
         void addNumber(int nb);
