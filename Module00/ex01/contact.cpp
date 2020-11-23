@@ -27,7 +27,7 @@ std::string Contact::getPostalAddress(){
 std::string Contact::getEmailAddress(){
     return (email_address);
 }
-long int Contact::getPhoneNumber(){
+std::string Contact::getPhoneNumber(){
     return (phone_number);
 }
 Date Contact::getBirthdayDate(){
@@ -43,44 +43,50 @@ std::string Contact::getDarkestSecret(){
     return (darkest_secret);
 }
 
+std::string Contact::trim(std::string str){
+    int     start;
+    int     end;
+    
+    start = str.find_first_not_of(" ");
+    end = str.find_last_not_of(" ");
+    str.erase(end + 1);
+    str.erase(0, start);
+    return (str);
+}
+
 void Contact::setFirstName(){
     std::string tmp;
     std::cout << "firstName : ";
-    std::cin >> tmp;
-    first_name = tmp;
-    std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
+    getline(std::cin, tmp);
+    first_name = trim(tmp);
 }
 
 void Contact::setLastName(){
     std::string tmp;
     std::cout << "lastName : ";
-    std::cin >> tmp;
-    last_name = tmp;
-    std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
+    getline(std::cin, tmp);
+    last_name = trim(tmp);
 }
 
 void Contact::setNickName(){
     std::string tmp;
     std::cout << "nickName : ";
-    std::cin >> tmp;
-    nick_name = tmp;
-    std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
+    getline(std::cin, tmp);
+    nick_name = trim(tmp);
 }
 
 void Contact::setLogin(){
     std::string tmp;
     std::cout << "login : ";
-    std::cin >> tmp;
-    login = tmp;
-    std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
+    getline(std::cin, tmp);
+    login = trim(tmp);
 }
 
 void Contact::setPostalAddress(){
-    char  buffer[501];
+    std::string tmp;
     std::cout << "postalAddress : ";
-    std::cin.getline(buffer, 500);
-    postal_address = buffer;
-    std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
+    getline(std::cin, tmp);
+    postal_address = trim(tmp);
 }
 
 int Contact::checkEmailFormat(std::string email){
@@ -95,7 +101,7 @@ int Contact::checkEmailFormat(std::string email){
     {
         if (email[i] == '@' && i != 0)
             check1 = i;
-        if (email[i] == '.' && i > check1)
+        if (email[i] == '.' && i > check1 + 1)
             check2 = i;
         ++i;
     }
@@ -107,46 +113,34 @@ int Contact::checkEmailFormat(std::string email){
 
 void Contact::setEmailAddress(){
     std::string tmp;
-
     do{
-        std::cin.clear();
         std::cout << "emailAddress : ";
-        std::cin.clear();
-        std::cin >> tmp;
+        getline(std::cin, tmp);
     }while (checkEmailFormat(tmp) == -1);
-    email_address = tmp;
-    std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
+    email_address = trim(tmp);
 }
 
-int Contact::checkPhoneFormat(long int number){
-    int i;
-
-    i = 0;
-    while (number != 0)
-    {
-        number /= 10;
-        ++i;
+int Contact::checkPhoneFormat(std::string number){
+    for(int i = 0; i < number.length(); ++i){
+        if (number[i] < '0' || number[i] > '9')
+        {
+            std::cout << "format non valide\n";
+            return (-1);
+        }   
     }
-    if (i >= 8)
+    if (number.length() >= 8)
         return (1);
-    std::cout << "format non valide\n" << "phoneNumber : ";
+    std::cout << "format non valide\n";
     return (-1);
 }
 
 void Contact::setPhoneNumber(){
-    long int number;
-    std::cout << "phoneNumber : ";
+    std::string tmp;
     do{
-        while ( ! ( std::cin >> number ) ) 
-        { 
-            std::cerr << "Erreur de saisie.\n";
-            std::cout << "phoneNumber : ";
-            std::cin.clear(); 
-            std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
-        }
-    }while(checkPhoneFormat(number) == -1);
-    phone_number = number;
-    std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
+        std::cout << "phoneNumber : ";
+        getline(std::cin, tmp);
+    }while(checkPhoneFormat(trim(tmp)) == -1);
+    phone_number = trim(tmp);
 }
 
 void Contact::setBirthdayDate(){
@@ -161,27 +155,22 @@ void Contact::setBirthdayDate(){
 void Contact::setFavoriteMeal(){
     std::string tmp;
     std::cout << "favoriteMeal : ";
-    std::cin >> tmp;
-    favorite_meal = tmp;
-    std::cin.clear(); 
-    std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
+    getline(std::cin, tmp);
+    favorite_meal = trim(tmp);
 }
 
 void Contact::setUnderwearColor(){
     std::string tmp;
     std::cout << "underwearColor : ";
-    std::cin >> tmp;
-    underwear_color = tmp;
-    std::cin.clear(); 
-    std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
+    getline(std::cin, tmp);
+    underwear_color = trim(tmp);
 }
 
 void Contact::setDarkestSecret(){
-    char buffer[501];
     std::string tmp;
     std::cout << "darksetSecret : ";
-    std::cin.getline(buffer, 500);
-    darkest_secret = buffer;
+    getline(std::cin, tmp);
+    darkest_secret = trim(tmp);
 }
 
 void Contact::reset()
@@ -192,7 +181,7 @@ void Contact::reset()
     login = "";
     postal_address = "";
     email_address = "";
-    phone_number = 0;
+    phone_number = "";
     nick_name = "";
     favorite_meal = "";
     underwear_color = "";

@@ -19,14 +19,15 @@ class Contact
     std::string login;
     std::string postal_address;
     std::string email_address;
-    long int phone_number;
+    std::string phone_number;
     Date birthday_date;
     std::string favorite_meal;
     std::string underwear_color;
     std::string darkest_secret;
 
     int checkEmailFormat(std::string email);
-    int checkPhoneFormat(long int number);
+    int checkPhoneFormat(std::string number);
+    std::string trim(std::string str);
 
     public:
 
@@ -37,7 +38,7 @@ class Contact
     std::string getLogin();
     std::string getPostalAddress();
     std::string getEmailAddress();
-    long int getPhoneNumber();
+    std::string getPhoneNumber();
     Date getBirthdayDate();
     std::string getFavoriteMeal();
     std::string getUnderwearColor();
