@@ -97,6 +97,8 @@ int Contact::checkEmailFormat(std::string email){
     i = 0;
     check1 = 0;
     check2 = 0;
+    if (email.compare("") == 0)
+        return (1);
     while (email[i] != '\0')
     {
         if (email[i] == '@' && i != 0)
@@ -121,6 +123,8 @@ void Contact::setEmailAddress(){
 }
 
 int Contact::checkPhoneFormat(std::string number){
+    if (number.compare("") == 0)
+        return (1);
     for(int i = 0; i < number.length(); ++i){
         if (number[i] < '0' || number[i] > '9')
         {

@@ -23,7 +23,7 @@ void Date::setDay(){
             std::cin.clear(); 
             std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
         }
-    }while(d < 0 || d > 31);
+    }while(d <= 0 || d > 31);
     day = d;
 }
 
@@ -38,7 +38,7 @@ void Date::setMonth(){
             std::cin.clear(); 
             std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
         }
-    }while(m < 0 || m > 12);
+    }while(m <= 0 || m > 12);
     month = m;
 }
 
