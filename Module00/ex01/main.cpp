@@ -11,6 +11,16 @@ static std::string trim(std::string str){
     return (str);
 }
 
+bool isNum(std::string str){
+    if(str.length() == 0)
+        return (false);
+    for (int i = 0; i < str.length(); ++i){
+        if (isdigit(str[i]) == false)
+            return (false);
+    }
+    return (true);
+}
+
 static int checkIndex(PhoneBook *phoneBook, int index)
 {
     if (index < 1 || index > 8)
@@ -28,27 +38,33 @@ static int checkIndex(PhoneBook *phoneBook, int index)
 
 static void searchContact(PhoneBook *phoneBook)
 {
+    std::string tmp;
     int index;
-    phoneBook[0].printContacts();
+
     if (phoneBook[0].getSize() > 0)
     {
+        phoneBook[0].printContacts();
         std::cout << "Entrez un index pour voir les coordonees de la personne";
         do{
-            std::cout << "index : ";
-            while ( ! ( std::cin >> index ) ) 
-            { 
-                std::cout << "Erreur de saisie" << std::endl;
+            index = -1;
+            while(index == -1)
+            {
+                index = -1;
                 std::cout << "index : ";
-                std::cin.clear(); 
-                std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
-            }
+                getline(std::cin, tmp);
+                tmp = trim(tmp);
+                if (tmp.length() == 0)
+                    std::cout << "Erreur de saisie" << std::endl;
+                else if (isNum(tmp) == false)
+                    std::cout << "Erreur de saisie" << std::endl;
+                else
+                    index = atoi(tmp.c_str());
+            }       
         }while (checkIndex(phoneBook, index) == -1);
         phoneBook[0].getContact(index - 1).print();
     }
     else
-    {
         std::cout << "votre annuaire est vide" << std::endl;
-    }
     
 }
 
@@ -61,7 +77,7 @@ static void addContact(PhoneBook *phoneBook)
     i = 0;
     while (phoneBook[0].getActivated(i) != 0)
         ++i;
-    if (i == 1)
+    if (i == 8)
     {
         std::cout << "votre annuaire telephonique est plein, voulez vous supprimez qql ?";
         do{
@@ -75,11 +91,19 @@ static void addContact(PhoneBook *phoneBook)
         {
             std::cout << "Entrez l index de la personne que vous souhaiter supprimer" << std::endl;
             do{
-                std::cout << "index : ";
-                while ( ! ( std::cin >> index ) ) 
+                index = -1;
+                while(index == -1)
                 {
-                    std::cout << "Erreur de saisie" << std::endl;
+                    index = -1;
                     std::cout << "index : ";
+                    getline(std::cin, tmp);
+                    tmp = trim(tmp);
+                    if (tmp.length() == 0)
+                        std::cout << "Erreur de saisie" << std::endl;
+                    else if (isNum(tmp) == false)
+                        std::cout << "Erreur de saisie" << std::endl;
+                    else
+                        index = atoi(tmp.c_str());
                 }
             }while (checkIndex(phoneBook, index) == -1);
             phoneBook[0].deleteContact(index - 1);
@@ -123,7 +147,7 @@ int     main()
         else if (cmd.compare("SEARCH") == 0)
             searchContact(phoneBook);
         else
-            break;
+            break ;
 
     }
     delete(phoneBook);

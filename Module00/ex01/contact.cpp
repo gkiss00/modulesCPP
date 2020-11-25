@@ -148,12 +148,7 @@ void Contact::setPhoneNumber(){
 }
 
 void Contact::setBirthdayDate(){
-    birthday_date.setDay();
-    std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
-    birthday_date.setMonth();
-    std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
-    birthday_date.setYear();
-    std::cin.ignore( std::numeric_limits<std::streamsize>::max(), '\n' );
+    birthday_date.setDate();
 }
 
 void Contact::setFavoriteMeal(){
@@ -193,15 +188,19 @@ void Contact::reset()
 }
 
 void Contact::print(){
-    std::cout << "Firstname : " << first_name << "\n";
-    std::cout << "Lastname : " <<last_name << "\n";
-    std::cout << "Nickanem : " <<nick_name << "\n";
-    std::cout << "Login : " <<login << "\n";
-    std::cout << "Postal address : " <<postal_address << "\n";
-    std::cout << "Email address : " <<email_address << "\n";
-    std::cout << "Phone number : " <<phone_number << "\n";
-    std::cout << "Birthday date : " <<birthday_date.getDay() << "/" << birthday_date.getMonth() << "/" << birthday_date.getYear() << "\n";
-    std::cout << "Favorite meal : " <<favorite_meal << "\n";
-    std::cout << "Underwear color : " <<underwear_color << "\n";
-    std::cout << "Darkest secret : " <<darkest_secret << "\n";
+    std::cout << "Firstname : " << first_name << std::endl;
+    std::cout << "Lastname : " <<last_name << std::endl;
+    std::cout << "Nickanem : " <<nick_name << std::endl;
+    std::cout << "Login : " <<login << std::endl;
+    std::cout << "Postal address : " <<postal_address << std::endl;
+    std::cout << "Email address : " <<email_address << std::endl;
+    std::cout << "Phone number : " <<phone_number << std::endl;
+    std::cout << "Birthday date : ";
+    if (birthday_date.getDay() != 0)
+        std::cout << birthday_date.getDay() << "/" << birthday_date.getMonth() << "/" << birthday_date.getYear() << std::endl;
+    else
+        std::cout << std::endl;
+    std::cout << "Favorite meal : " <<favorite_meal << std::endl;
+    std::cout << "Underwear color : " <<underwear_color << std::endl;
+    std::cout << "Darkest secret : " <<darkest_secret << std::endl;
 }

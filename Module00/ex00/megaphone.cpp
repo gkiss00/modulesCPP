@@ -25,46 +25,23 @@ class Megaphone
         i = 1;
         default_message = "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
         if (nb_message == 1)
-            std::cout << default_message << "\n";
+            std::cout << default_message << std::endl;
         else
         {
             while (i < nb_message)
             {
-                toUpper(message[i]);
-                write(1, message[i], ft_strlen(message[i]));
+                std::string tmp(message[i]);
+                for (int j = 0; j < tmp.length(); ++j){
+                    if(toupper(tmp[j]) != tmp[j])
+                        putchar(toupper(tmp[j]));
+                    else
+                        putchar(tmp[j]);   
+                }    
                 ++i;
             }
-            std::cout << '\n';
-        }
-        
-    }
-
-    private:
-
-    int     ft_strlen(char *str)
-    {
-        int i;
-
-        i = 0;
-        while (str[i] != '\0')
-            ++i;
-        return (i);
-    }
-
-    void    toUpper(char *str)
-    {
-        int     i;
-
-        i = 0;
-        while (str[i] != '\0')
-        {
-            if (str[i] >= 'a' && str[i] <= 'z')
-                str[i] = str[i] - ('a' - 'A');
-            ++i;
+            std::cout << std::endl;
         }
     }
-
-
 };
 
 int         main(int argc, char **argv)

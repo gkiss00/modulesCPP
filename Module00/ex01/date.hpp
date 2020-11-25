@@ -16,14 +16,18 @@ class Date
     int month;
     int year;
 
+    std::string trim(std::string str);
+    bool isNum(std::string str);
+
     public:
 
     int getDay();
     int getMonth();
     int getYear();
-    void setDay();
+    int setDay();
     void setMonth();
     void setYear();
+    void setDate();
 };
 
 #endif
