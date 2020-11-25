@@ -56,21 +56,25 @@ std::string PhoneBook::tronk(std::string str)
 {
     int         i;
     std::string tronked;
+    std::string tmp;
 
     tronked = "";
-    i = 0;
-    while (i < 10 && str[i] != '\0')
+    tmp = str;
+    if (tmp.length() > 10)
     {
-        tronked += str[i];
-        ++i;
+        tmp[9] = '.';
+        tmp.erase(10);
     }
-    while (i < 10)
+    else
     {
-        tronked += " ";
-        ++i;
+        i = 0;
+        while(i < 10 - tmp.length())
+        {
+            tronked += " ";
+            ++i;
+        }
     }
-    if (str.size() > 10)
-        tronked[9] = '.';
+    tronked += tmp;
     return (tronked);
 }
 
