@@ -25,6 +25,7 @@ void    ZombieEvent::randomChump()
     int         lenght;
     int         i;
     
+    srand(time(NULL));
     lenght = rand() % 10 + 2;
     name = "";
     i = 0;

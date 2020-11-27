@@ -6,7 +6,7 @@ FLAGS = -Wall -Wextra -Werror
 
 DELETE = rm -rf
 
-NAME = filecopier
+NAME = replace
 
 all: ${NAME}
 	

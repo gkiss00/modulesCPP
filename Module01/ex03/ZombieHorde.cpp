@@ -22,6 +22,7 @@ ZombieHorde::~ZombieHorde()
 
 void    ZombieHorde::initiateHorde()
 {
+    srand(time(NULL));
     this->zombies = new Zombie[number];
 }
 

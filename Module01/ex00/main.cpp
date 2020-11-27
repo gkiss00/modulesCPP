@@ -13,8 +13,8 @@ void    ponyOnTheStack()
 
 void    ponyOnTheHeap()
 {
-    Pony *pony = new Pony("musatng", 5, 200);
-    pony[0].sauter();
+    Pony *pony = new Pony("mustang", 5, 200);
+    pony->sauter();
     std::cout << "Le pony a " << pony->getAge() << " ans" << std::endl;
     pony->vieillir();
     std::cout << "Le pony a " << pony->getAge() << " ans" << std::endl;
