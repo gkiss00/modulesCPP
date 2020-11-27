@@ -80,13 +80,13 @@ std::string PhoneBook::tronk(std::string str)
 
 void PhoneBook::printContacts(){
     int i;
-    std::cout << "Index     |FirstName |LastName  |Login     \n";
+    std::cout << "     Index| FirstName|  LastName|     Login" << std::endl;
 
     i = 0;
     while (i < 8)
     {
         if (activated[i] == 1)
-            std::cout << i + 1 << "         |" << tronk(contact[i].getFirstName()) << "|" << tronk(contact[i].getLastName()) << "|" << tronk(contact[i].getLogin()) << "\n";
+            std::cout << "         " << i + 1 << "|" << tronk(contact[i].getFirstName()) << "|" << tronk(contact[i].getLastName()) << "|" << tronk(contact[i].getLogin()) << std::endl;
         ++i;
     }
 }
