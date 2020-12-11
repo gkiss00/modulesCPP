@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iterator>
 
 class Span {
     protected:
@@ -18,6 +19,14 @@ class Span {
         void addNumber(int nb);
         int shortestSpan();
         int longestSpan();
+
+        template <typename Iterator>
+        void addRange(Iterator begin, Iterator end){
+            while(begin != end){
+                this->addNumber(*begin);
+                ++begin;
+            }
+        }
 };
 
 #endif

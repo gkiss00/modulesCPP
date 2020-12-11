@@ -11,11 +11,17 @@
 template<typename T>
 class MutantStack : public std::stack<T>{  
     public:
+
+        typedef typename std::stack<T>::container_type::iterator iterator;
+        typedef typename std::stack<T>::container_type::const_iterator const_iterator;
+        typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
+        typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
+
         explicit MutantStack();
         explicit MutantStack(MutantStack &target);
         MutantStack &operator=(const MutantStack<T> &target);
         ~MutantStack();
-
+        /*
         class iterator : public std::iterator<std::output_iterator_tag, T>
         {
             public:
@@ -30,11 +36,24 @@ class MutantStack : public std::stack<T>{
                 MutantStack<T> &target;
                 unsigned int index;
         };
+        */
+        iterator begin();
+        const_iterator begin() const;
 
-        MutantStack::iterator begin();
-        MutantStack::iterator end();
+        iterator end();
+        const_iterator end() const;
+
+        reverse_iterator rbegin();
+        const_reverse_iterator rbegin() const;
+
+        reverse_iterator rend();
+        const_reverse_iterator rend() const;
 };
-
+//**********************
+//**********************
+//*****CONSTRUCTOR******
+//**********************
+//**********************
 template<typename T>
 MutantStack<T>::MutantStack() : std::stack<T>()
 {
@@ -59,19 +78,63 @@ MutantStack<T>::~MutantStack()
 {
 
 }
-
+//**********************
+//**********************
+//*******ITERATOR*******
+//**********************
+//**********************
 template<typename T>
 typename MutantStack<T>::iterator MutantStack<T>::begin()
 {
-    return (MutantStack<T>::iterator(*this, 0));
+    return (std::stack<T>::c.begin());
+    //return (MutantStack<T>::iterator(*this, 0));
+}
+
+template<typename T>
+typename MutantStack<T>::const_iterator MutantStack<T>::begin() const
+{
+    return (std::stack<T>::c.begin());
+    //return (MutantStack<T>::iterator(*this, 0));
 }
 
 template<typename T>
 typename MutantStack<T>::iterator MutantStack<T>::end()
 {
-    return (MutantStack<T>::iterator(*this, this->size()));
+    return (std::stack<T>::c.end());
 }
 
+template<typename T>
+typename MutantStack<T>::const_iterator MutantStack<T>::end() const
+{
+    return (std::stack<T>::c.end());
+}
+
+template<typename T>
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rbegin()
+{
+    return (std::stack<T>::c.rbegin());
+    //return (MutantStack<T>::iterator(*this, 0));
+}
+
+template<typename T>
+typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rbegin() const
+{
+    return (std::stack<T>::c.rbegin());
+    //return (MutantStack<T>::iterator(*this, 0));
+}
+
+template<typename T>
+typename MutantStack<T>::reverse_iterator MutantStack<T>::rend()
+{
+    return (std::stack<T>::c.rend());
+}
+
+template<typename T>
+typename MutantStack<T>::const_reverse_iterator MutantStack<T>::rend() const
+{
+    return (std::stack<T>::c.rend());
+}
+/*
 template<typename T>
 MutantStack<T>::iterator::iterator(MutantStack<T> &target, unsigned int index) : target(target)
 {
@@ -137,5 +200,5 @@ bool MutantStack<T>::iterator::operator!=(MutantStack::iterator &target)
 {
     return (this->index != target.index);
 }
-
+*/
 #endif
