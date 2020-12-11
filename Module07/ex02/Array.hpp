@@ -2,6 +2,7 @@
 #define ARRAY
 
 #include <string>
+#include <stdexcept>
 template<typename T>
 
 class Array {
