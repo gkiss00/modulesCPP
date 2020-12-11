@@ -42,11 +42,15 @@ void Bureaucrat::getPromoted()
 {
     if (this->grade > 1)
         this->grade -= 1;
+    else
+        throw (GradeTooHighException());
 }
 void Bureaucrat::getDismiss()
 {
     if (this->grade < 150)
         this->grade += 1;
+    else
+        throw (GradeTooLowException());
 }
 
 void Bureaucrat::signForm(Form &form)

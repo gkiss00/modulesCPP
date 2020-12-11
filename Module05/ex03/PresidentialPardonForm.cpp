@@ -19,6 +19,11 @@ PresidentialPardonForm::~PresidentialPardonForm()
 
 void PresidentialPardonForm::execute(const Bureaucrat &executor) const
 {
+    if (this->getIsSigned() == false)
+    {
+        std::cout << "Form is not signed" << std::endl;
+        return ;
+    }
     if (executor.getGrade() <= this->getRequireGradeToE())
     {
         std::cout << executor.getName() << " a ete pardonne par  Zafod Beeblebrox." << std::endl;

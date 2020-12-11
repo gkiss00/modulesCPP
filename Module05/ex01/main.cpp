@@ -108,13 +108,13 @@ int main()
     try
     {
         std::cout << std::endl << "Creation d un form avec un grade correct : " << std::endl << std::endl;
-        Bureaucrat b5("Patron", 1);
-        Bureaucrat b6("Noob", 120);
-        Form f2("No_idea", 40, 40);
-        std::cout << f2 << std::endl;
+        Bureaucrat b7("Patron", 1);
+        Bureaucrat b8("Noob", 120);
+        Form f3("No_idea", 40, 40);
+        std::cout << f3 << std::endl;
 
-        b6.signForm(f2);
-        f2.beSigned(b5);
+        b7.signForm(f3);
+        f3.beSigned(b8);
     }
     catch(Form::GradeTooHighException &e)
     {
@@ -125,6 +125,23 @@ int main()
         std::cerr << e.what() << std::endl;;
     }
 
+    try
+    {
+        std::cout << std::endl << "Creation d un form avec un grade correct : " << std::endl << std::endl;
+        Bureaucrat b6("Noob", 120);
+        Form f3("No_idea", 40, 40);
+        std::cout << f3 << std::endl;
 
+        b6.signForm(f3);
+        f3.beSigned(b6);
+    }
+    catch(Form::GradeTooHighException &e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    catch(Form::GradeTooLowException &e)
+    {
+        std::cerr << e.what() << std::endl;;
+    }
     return (0);
 }

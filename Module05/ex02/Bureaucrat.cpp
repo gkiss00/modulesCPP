@@ -42,11 +42,15 @@ void Bureaucrat::getPromoted()
 {
     if (this->grade > 1)
         this->grade -= 1;
+    else
+        throw (GradeTooHighException());
 }
 void Bureaucrat::getDismiss()
 {
     if (this->grade < 150)
         this->grade += 1;
+    else
+        throw (GradeTooLowException());
 }
 
 void Bureaucrat::signForm(Form &form)
@@ -68,6 +72,11 @@ void Bureaucrat::signForm(Form &form)
 
 void Bureaucrat::executeForm(Form &form)
 {
+    if (form.getIsSigned() ==  false)
+    {
+        std::cout << "Form is not signed" << std::endl;
+        return ;
+    }
     if (this->grade <= form.getRequireGradeToE())
     {
         std::cout << this->name << " execute form : " << form.getName() << std::endl;

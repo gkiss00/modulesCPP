@@ -19,6 +19,11 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
+    if (this->getIsSigned() == false)
+    {
+        std::cout << "Form is not signed" << std::endl;
+        return ;
+    }
     if (executor.getGrade() <= this->getRequireGradeToE())
     {
         std::string fileName = executor.getName() + "_shrubbery";
@@ -34,7 +39,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const
         
     }
     else
-        throw (Form::GradeTooLowException());
+        throw (Form::GradeTooHighException());
 }
 
 std::string printArbre()

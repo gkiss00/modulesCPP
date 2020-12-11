@@ -19,10 +19,15 @@ RobotomyRequestForm::~RobotomyRequestForm()
 
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {
+    if (this->getIsSigned() == false)
+    {
+        std::cout << "Form is not signed" << std::endl;
+        return ;
+    }
     if (executor.getGrade() <= this->getRequireGradeToE())
     {
         std::cout << "Bzzz bzzz... " << executor.getName() << " a ete robotomize." << std::endl;
     }
     else
-        throw (Form::GradeTooLowException());
+        throw (Form::GradeTooHighException());
 }

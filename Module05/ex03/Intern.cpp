@@ -72,5 +72,6 @@ Form *Intern::makeForm(std::string type, std::string target)
         delete(tab[i]);
     }
     delete[](tab);
+    std::cout << "Form unfound" << std::endl;
     return (NULL);
 }

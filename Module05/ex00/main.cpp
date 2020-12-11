@@ -41,8 +41,11 @@ int main()
         Bureaucrat b3("Bob", 2);
         std::cout << b3 << std::endl;
         b3.getPromoted();
+        std::cout << b3 << std::endl;
         b3.getPromoted();
+        std::cout << b3 << std::endl;
         b3.getPromoted();
+        std::cout << b3 << std::endl;
         b3.getPromoted();
         std::cout << b3 << std::endl;
     }
@@ -61,8 +64,11 @@ int main()
         Bureaucrat b4("Eric", 148);
         std::cout << b4 << std::endl;
         b4.getDismiss();
+        std::cout << b4 << std::endl;
         b4.getDismiss();
+        std::cout << b4 << std::endl;
         b4.getDismiss();
+        std::cout << b4 << std::endl;
         b4.getDismiss();
         std::cout << b4 << std::endl;
     }
