@@ -18,7 +18,7 @@ int main(int argc, char **argv)
         char c = x;
         if (c >= ' ' && c <= '~')
         {
-            std::cout << "char: " << c << std::endl;
+            std::cout << "char: '" << c << "'" << std::endl;
         }
         else if (c < 0 || c > 127)
         {
