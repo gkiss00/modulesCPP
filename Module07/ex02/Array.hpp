@@ -7,9 +7,8 @@ template<typename T>
 class Array {
     protected:
         int sizeTab;
-        
-    public:
         T *tab;
+    public:
         Array()
         {
             this->tab = NULL;

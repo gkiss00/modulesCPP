@@ -1,4 +1,5 @@
 SRCS=	whatever.cpp \
+		main.cpp \
 
 OBJS= ${SRCS:.cpp=.o}
 
