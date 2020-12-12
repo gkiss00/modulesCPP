@@ -12,10 +12,9 @@ int main()
 {
     try
     {
-        std::cout << std::endl << "Creation d un patron et d un bronze : " << std::endl << std::endl;
+        std::cout << std::endl << "Creation d un patron : " << std::endl << std::endl;
 
         Bureaucrat boss("Patron", 1);
-        Bureaucrat noob("Bronze", 150);
 
         std::cout << std::endl << "Arrivee d un Intern et creation d un fichier execute par le boss : " << std::endl << std::endl;
         Intern intern;

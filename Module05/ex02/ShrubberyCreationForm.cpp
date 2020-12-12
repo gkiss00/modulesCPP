@@ -1,10 +1,10 @@
 #include "ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm() : Form(147, 135)
+ShrubberyCreationForm::ShrubberyCreationForm() : Form(145, 137)
 {
 
 }
-ShrubberyCreationForm::ShrubberyCreationForm(std::string name) : Form(name, 147, 135)
+ShrubberyCreationForm::ShrubberyCreationForm(std::string name) : Form(name, 145, 137)
 {
 
 }
