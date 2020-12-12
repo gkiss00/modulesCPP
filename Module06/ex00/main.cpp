@@ -1,7 +1,7 @@
 #include <string>
 #include <iostream>
 
-static int check_error(int argc, char **argv)
+static int check_error(int argc)
 {
     if (argc != 2)
         return (-1);
@@ -10,7 +10,7 @@ static int check_error(int argc, char **argv)
 
 int main(int argc, char **argv)
 {
-    if (check_error(argc, argv) == -1)
+    if (check_error(argc) == -1)
         return (1);
     std::string number(argv[1]);
     try {

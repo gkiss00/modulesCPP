@@ -13,6 +13,9 @@ all: ${NAME}
 ${NAME}: ${OBJS}
 	clang++ -o ${NAME} ${FLAGS} ${OBJS}
 
+.cpp.o:
+	clang++ ${FLAGS} -c $< -o $@
+
 clean:
 	${DELETE} ${OBJS}
 

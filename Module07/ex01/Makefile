@@ -2,7 +2,7 @@ SRCS=	main.cpp \
 
 OBJS= ${SRCS:.cpp=.o}
 
-NAME= template
+NAME= iter
 
 FLAGS = -Wall -Wextra -Werror
 
@@ -12,6 +12,9 @@ all: ${NAME}
 	
 ${NAME}: ${OBJS}
 	clang++ -o ${NAME} ${FLAGS} ${OBJS}
+
+.cpp.o:
+	clang++ ${FLAGS} -c $< -o $@
 
 clean:
 	${DELETE} ${OBJS}
